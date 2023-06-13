@@ -7,6 +7,8 @@ const specsRoute=require('./routes/oemSpecs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const carRoutes = require('./routes/carRoutes');
+const session = require('express-session');
+
 require('dotenv').config();
 const app = express();
 app.use(cookieParser());
