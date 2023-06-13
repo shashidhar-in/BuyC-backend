@@ -83,8 +83,12 @@ module.exports = (pool) => {
             const token = jwt.sign({ userId, username, email,mobileNumber }, process.env.JWT_SECRET);
 
             // Store the token in a cookie
-            res.cookie('token', token, { httpOnly: true });
-
+            res.cookie('token', token, {
+              httpOnly: true,
+              sameSite: 'None',
+              secure: true
+            });
+            
             res.json({ message: 'User created successfully' });
           });
         });
@@ -145,8 +149,12 @@ router.post('/login', (req, res) => {
         const token = jwt.sign({ userId, username, email, mobileNumber }, process.env.JWT_SECRET);
   
         // Store the token in a cookie
-        res.cookie('token', token, { httpOnly: true });
-  
+        res.cookie('token', token, {
+          httpOnly: true,
+          sameSite: 'None',
+          secure: true
+        });
+          
         // Send a response or redirect the user
         res.json({ message: 'User logged in successfully' });
       });
