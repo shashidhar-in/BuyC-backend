@@ -14,13 +14,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-const corsOptions = {
-  origin: 'https://buyc-ssd.netlify.app',
+// Update the origin in the cors configuration
+app.use(cors({
+  origin: 'https://buyc-hp6j.onrender.com',
   credentials: true
-};
+}));
 
-// Use the corsOptions in your CORS middleware
-app.use(cors(corsOptions));
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({

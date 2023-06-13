@@ -17,7 +17,7 @@ module.exports = (pool) => {
   // Define the route for user signup
   router.post('/signup', (req, res) => {
     const { username, email, password, mobileNumber, location } = req.body;
-    res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app');
+    res.header('Access-Control-Allow-Origin', 'https://buyc-hp6j.onrender.com');
     res.header('Access-Control-Allow-Credentials', 'true');
     // Check if user already exists
     const checkUserQuery = 'SELECT * FROM users WHERE email = ?';
@@ -83,12 +83,14 @@ module.exports = (pool) => {
             const token = jwt.sign({ userId, username, email,mobileNumber }, process.env.JWT_SECRET);
 
             // Store the token in a cookie
-            res.cookie('token', token, {
-              httpOnly: true,
-              sameSite: 'None',
-              secure: true,
-              domain: 'https://buyc-ssd.netlify.app/' // Add this line
-            });
+          // Store the token in a cookie
+res.cookie('token', token, {
+  httpOnly: true,
+  sameSite: 'None',
+  secure: true,
+  domain: 'buyc-hp6j.onrender.com' // Update the domain here
+});
+
             
             res.json({ message: 'User created successfully' });
           });
@@ -113,8 +115,8 @@ module.exports = (pool) => {
 router.post('/login', (req, res) => {
     // Retrieve user credentials from the request body
     const { email, password } = req.body;
-    res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app');
-  res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Origin', 'https://buyc-hp6j.onrender.com');
+    res.header('Access-Control-Allow-Credentials', 'true');
     // Verify user credentials (e.g., query the database)
     // If credentials are valid, generate a JWT token
     const loginUserQuery = 'SELECT * FROM users WHERE email = ?';
@@ -150,12 +152,14 @@ router.post('/login', (req, res) => {
         const token = jwt.sign({ userId, username, email, mobileNumber }, process.env.JWT_SECRET);
   
         // Store the token in a cookie
-        res.cookie('token', token, {
+        // Store the token in a cookie
+          res.cookie('token', token, {
           httpOnly: true,
           sameSite: 'None',
           secure: true,
-          domain: '.buyc-ssd.netlify.app' // Add this line
+          domain: 'buyc-hp6j.onrender.com' // Update the domain here
         });
+
         
         // Send a response or redirect the user
         res.json({ message: 'User logged in successfully' });
