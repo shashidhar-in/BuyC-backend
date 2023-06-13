@@ -88,7 +88,7 @@ res.cookie('token', token, {
   httpOnly: true,
   sameSite: 'None',
   secure: true,
-  domain: 'buyc-hp6j.onrender.com' // Update the domain here
+  domain: '.buyc-hp6j.onrender.com' // Update the domain here
 });
 
             
@@ -157,7 +157,7 @@ router.post('/login', (req, res) => {
           httpOnly: true,
           sameSite: 'None',
           secure: true,
-          domain: 'buyc-hp6j.onrender.com' // Update the domain here
+          domain: '.buyc-hp6j.onrender.com' // Update the domain here
         });
 
         
