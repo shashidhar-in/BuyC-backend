@@ -84,12 +84,12 @@ module.exports = (pool) => {
 
             // Store the token in a cookie
           // Store the token in a cookie
-res.cookie('token', token, {
-  httpOnly: true,
-  sameSite: 'None',
-  secure: true,
-  domain: '.buyc-hp6j.onrender.com' // Update the domain here
-});
+            res.cookie('token', token, {
+              httpOnly: true,
+              sameSite: 'None',
+              secure: true,
+              domain: 'buyc-hp6j.onrender.com' // Update the domain here
+            });
 
             
             res.json({ message: 'User created successfully' });
@@ -157,7 +157,7 @@ router.post('/login', (req, res) => {
           httpOnly: true,
           sameSite: 'None',
           secure: true,
-          domain: '.buyc-hp6j.onrender.com' // Update the domain here
+          domain: 'buyc-hp6j.onrender.com' // Update the domain here
         });
 
         
