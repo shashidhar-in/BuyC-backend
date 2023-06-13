@@ -87,7 +87,7 @@ module.exports = (pool) => {
               httpOnly: true,
               sameSite: 'None',
               secure: true,
-              domain: '.buyc-ssd.netlify.app' // Add this line
+              domain: 'https://buyc-ssd.netlify.app/' // Add this line
             });
             
             res.json({ message: 'User created successfully' });
