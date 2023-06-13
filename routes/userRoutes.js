@@ -17,7 +17,8 @@ module.exports = (pool) => {
   // Define the route for user signup
   router.post('/signup', (req, res) => {
     const { username, email, password, mobileNumber, location } = req.body;
-
+    res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app');
+    res.header('Access-Control-Allow-Credentials', 'true');
     // Check if user already exists
     const checkUserQuery = 'SELECT * FROM users WHERE email = ?';
     pool.query(checkUserQuery, [email], (error, results) => {
@@ -107,7 +108,8 @@ module.exports = (pool) => {
 router.post('/login', (req, res) => {
     // Retrieve user credentials from the request body
     const { email, password } = req.body;
-  
+    res.header('Access-Control-Allow-Origin', 'https://buyc-ssd.netlify.app');
+  res.header('Access-Control-Allow-Credentials', 'true');
     // Verify user credentials (e.g., query the database)
     // If credentials are valid, generate a JWT token
     const loginUserQuery = 'SELECT * FROM users WHERE email = ?';

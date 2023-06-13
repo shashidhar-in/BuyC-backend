@@ -10,7 +10,10 @@ const carRoutes = require('./routes/carRoutes');
 require('dotenv').config();
 const app = express();
 app.use(cookieParser());
-app.use(cors({ credentials: true }));
+app.use(cors({
+  origin: 'https://buyc-ssd.netlify.app',
+  credentials: true
+}));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -38,9 +41,9 @@ app.listen(process.env.PORT, () => {
 });
 
 });
-// Handle preflight requests for the /api/users/login route
-app.options('/api/users/signup', cors({ origin: 'https://buyc-ssd.netlify.app', credentials: true }));
-app.options('/api/users/login', cors({ origin: 'https://buyc-ssd.netlify.app', credentials: true }));
+// // Handle preflight requests for the /api/users/login route
+// app.options('/api/users/signup', cors({ origin: 'https://buyc-ssd.netlify.app', credentials: true }));
+// app.options('/api/users/login', cors({ origin: 'https://buyc-ssd.netlify.app', credentials: true }));
 
 
 // Create the userRoutes with the pool and use it
