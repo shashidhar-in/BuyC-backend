@@ -24,11 +24,12 @@ app.use(cors({
 app.use(session({
   secret: 'yoursecret',
   cookie: {
-      path: '/',
-      domain: '.buyc-hp6j.onrender.com',
-      maxAge: 1000 * 60 * 24 // 24 hours
+    path: '/',
+    domain: 'buyc-hp6j.onrender.com',
+    maxAge: 1000 * 60 * 24 // 24 hours
   }
 }));
+
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Origin', req.headers.origin);
