@@ -86,7 +86,8 @@ module.exports = (pool) => {
             res.cookie('token', token, {
               httpOnly: true,
               sameSite: 'None',
-              secure: true
+              secure: true,
+              domain: '.buyc-ssd.netlify.app' // Add this line
             });
             
             res.json({ message: 'User created successfully' });
@@ -152,9 +153,10 @@ router.post('/login', (req, res) => {
         res.cookie('token', token, {
           httpOnly: true,
           sameSite: 'None',
-          secure: true
+          secure: true,
+          domain: '.buyc-ssd.netlify.app' // Add this line
         });
-          
+        
         // Send a response or redirect the user
         res.json({ message: 'User logged in successfully' });
       });
