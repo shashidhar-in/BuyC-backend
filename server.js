@@ -10,14 +10,17 @@ const carRoutes = require('./routes/carRoutes');
 require('dotenv').config();
 const app = express();
 app.use(cookieParser());
-app.use(cors({
-  origin: 'https://buyc-ssd.netlify.app',
-  credentials: true
-}));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
+const corsOptions = {
+  origin: 'https://buyc-ssd.netlify.app',
+  credentials: true
+};
 
+// Use the corsOptions in your CORS middleware
+app.use(cors(corsOptions));
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
