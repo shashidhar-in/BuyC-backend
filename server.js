@@ -12,31 +12,15 @@ const session = require('express-session');
 require('dotenv').config();
 const app = express();
 app.use(cookieParser());
-
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 // Update the origin in the cors configuration
 app.use(cors({
-  origin: 'https://buyc-hp6j.onrender.com',
-  credentials: true
-}));
-app.use(session({
-  secret: 'yoursecret',
-  cookie: {
-    path: '/',
-    domain: 'buyc-hp6j.onrender.com',
-    maxAge: 1000 * 60 * 24 // 24 hours
-  }
+  origin:"http://localhost:5000",
+  credentials:true
 }));
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-  next();
-});
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
